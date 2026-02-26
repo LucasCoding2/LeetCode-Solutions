@@ -21,12 +21,10 @@ public:
             inOrderVector = inorderTraversal(root->left);
         }
         inOrderVector.push_back(root->val);
-        if(root->right != NULL) {
-            
+        if(root->right != NULL) {      
             vector<int> inOrderVector2 = inorderTraversal(root->right);
             inOrderVector.insert(inOrderVector.end(), inOrderVector2.begin(),inOrderVector2.end()); 
-        }
-        
+        }  
         return inOrderVector;
     }
 };
