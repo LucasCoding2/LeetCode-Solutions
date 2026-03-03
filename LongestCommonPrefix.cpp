@@ -1,26 +1,17 @@
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-       std::multimap<std::string, int> prefixes;
-       int val = 0;
-       for(int i = 0; i < strs.size(); i++) {
-          for(int j = 2; j < strs[i].size(); j++) {
-            val++;
-             prefixes.insert({strs[i].substr(0,j),val});
-          }
-       } 
-       
-       int largestEntries = 0;
-       int count = 0;
-       string mostCommonPrefix = "";
-       for (const auto&pair : prefixes) {
-           count = prefixes.count(pair.first);
-           if(count > 1 && count > largestEntries) {
-               largestEntries = count;
-               mostCommonPrefix = pair.first;
+       string longestCommonPrefix = "";
+       for(int i = 1; i < strs[0].length(); i++) {
+           int j = 0;
+           while(j < strs.size() && strs[0].substr(0,i) == strs[j].substr(0,i) ) {
+             j++;
            }
+           if(j == strs.size() ) {
+               longestCommonPrefix = longestCommonPrefix + strs[0][i-1];
+           }      
        }
        
-       return mostCommonPrefix;
+       return longestCommonPrefix;
     }
 };
